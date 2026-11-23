@@ -1,0 +1,12 @@
+---
+import { site } from '../lib/site';
+const unit = [site.dateLong, site.venue, site.city];
+const run = Array.from({ length: 3 }, () => unit).flat();
+---
+<div class="marquee" aria-label={`${site.dateLong}, ${site.venue}, ${site.city}`}>
+  <div class="track" aria-hidden="true">
+    {[0, 1].map(() => (
+      <span>{run.map((t) => (<Fragment>{t}<i>&middot;</i></Fragment>))}</span>
+    ))}
+  </div>
+</div>

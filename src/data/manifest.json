@@ -1,0 +1,161 @@
+{
+  "logos/slaughterfest-white.png": {
+    "660": {
+      "src": "logos/slaughterfest-660.webp",
+      "width": 660,
+      "height": 277,
+      "kb": 48
+    },
+    "1320": {
+      "src": "logos/slaughterfest-1320.webp",
+      "width": 1320,
+      "height": 552,
+      "kb": 121
+    }
+  },
+  "art/burst": {
+    "src": "art/burst.webp",
+    "width": 900,
+    "height": 623,
+    "kb": 91
+  },
+  "photos/kryptos.jpg": {
+    "wide": {
+      "src": "photos/kryptos-wide.webp",
+      "width": 1600,
+      "height": 900,
+      "kb": 19
+    },
+    "mob": {
+      "src": "photos/kryptos-mob.webp",
+      "width": 720,
+      "height": 450,
+      "kb": 7
+    }
+  },
+  "photos/gutslit.jpg": {
+    "wide": {
+      "src": "photos/gutslit-wide.webp",
+      "width": 1600,
+      "height": 900,
+      "kb": 53
+    },
+    "mob": {
+      "src": "photos/gutslit-mob.webp",
+      "width": 720,
+      "height": 450,
+      "kb": 26
+    }
+  },
+  "photos/astrit.jpg": {
+    "wide": {
+      "src": "photos/astrit-wide.webp",
+      "width": 1600,
+      "height": 900,
+      "kb": 87
+    },
+    "mob": {
+      "src": "photos/astrit-mob.webp",
+      "width": 720,
+      "height": 450,
+      "kb": 35
+    }
+  },
+  "photos/fallen-letters.jpg": {
+    "wide": {
+      "src": "photos/fallen-letters-wide.webp",
+      "width": 1600,
+      "height": 900,
+      "kb": 12
+    },
+    "mob": {
+      "src": "photos/fallen-letters-mob.webp",
+      "width": 720,
+      "height": 450,
+      "kb": 6
+    }
+  },
+  "photos/backrooms.jpg": {
+    "wide": {
+      "src": "photos/backrooms-wide.webp",
+      "width": 1600,
+      "height": 900,
+      "kb": 22
+    },
+    "mob": {
+      "src": "photos/backrooms-mob.webp",
+      "width": 720,
+      "height": 450,
+      "kb": 14
+    }
+  },
+  "photos/hli.jpg": {
+    "wide": {
+      "src": "photos/haiku-like-imagination-wide.webp",
+      "width": 1600,
+      "height": 900,
+      "kb": 37
+    },
+    "mob": {
+      "src": "photos/haiku-like-imagination-mob.webp",
+      "width": 720,
+      "height": 450,
+      "kb": 18
+    }
+  },
+  "bands/kryptos-logo-bw.png": {
+    "src": "bands/kryptos-logo-bw.webp",
+    "width": 720,
+    "height": 440
+  },
+  "bands/gutslit-logo.png": {
+    "src": "bands/gutslit-logo.webp",
+    "width": 720,
+    "height": 318
+  },
+  "bands/astrit-logo.png": {
+    "src": "bands/astrit-logo.webp",
+    "width": 668,
+    "height": 170
+  },
+  "bands/fallen-letters-logo.png": {
+    "src": "bands/fallen-letters-logo.webp",
+    "width": 720,
+    "height": 343
+  },
+  "bands/backrooms-logo.png": {
+    "src": "bands/backrooms-logo.webp",
+    "width": 720,
+    "height": 400
+  },
+  "bands/hli-logo.png": {
+    "src": "bands/hli-logo.webp",
+    "width": 560,
+    "height": 264
+  },
+  "partners/catalyst-studio.png": {
+    "src": "partners/catalyst-studio.webp",
+    "width": 250,
+    "height": 250
+  },
+  "partners/bsdk.png": {
+    "src": "partners/bsdk.webp",
+    "width": 375,
+    "height": 250
+  },
+  "partners/metal-maniax.png": {
+    "src": "partners/metal-maniax.webp",
+    "width": 250,
+    "height": 250
+  },
+  "partners/sinusoidal.png": {
+    "src": "partners/sinusoidal.webp",
+    "width": 600,
+    "height": 237
+  },
+  "partners/skillbox-white.png": {
+    "src": "partners/skillbox-white.webp",
+    "width": 500,
+    "height": 500
+  }
+}

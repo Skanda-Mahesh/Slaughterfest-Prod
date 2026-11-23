@@ -1,0 +1,116 @@
+---
+// Latin subsets only, and only the weights the design uses (UI text uses the system font).
+import '@fontsource/cinzel/latin-400.css';
+import '@fontsource/cinzel/latin-600.css';
+import '@fontsource/eb-garamond/latin-400.css';
+import '@fontsource/eb-garamond/latin-400-italic.css';
+import cinzel600 from '@fontsource/cinzel/files/cinzel-latin-600-normal.woff2?url';
+import garamond400 from '@fontsource/eb-garamond/files/eb-garamond-latin-400-normal.woff2?url';
+import '../styles/global.css';
+import { asset, manifest, site } from '../lib/site';
+
+const title = `${site.name} ${site.year} | ${site.dateLong}, ${site.venue}, ${site.city}`;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const ogImage = Astro.site ? new URL(asset('og.jpg'), Astro.site).href : undefined;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const logo = manifest['logos/slaughterfest-white.png'];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={site.description} />
+    <meta name="theme-color" content="#0B0A0A" />
+    <!-- Weak-device switch ("lite" mode): decided before first paint, see global.css. -->
+    <script is:inline>
+      (function () { try { var n = navigator, c = n.connection || {}, lite = (n.deviceMemory && n.deviceMemory <= 2) || (n.hardwareConcurrency && n.hardwareConcurrency <= 2) || c.saveData || /(^|-)2g$/.test(c.effectiveType || ''); if (lite) document.documentElement.classList.add('lite'); } catch (e) {} })();
+    </script>
+    <link rel="preload" as="font" type="font/woff2" href={cinzel600} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={garamond400} crossorigin />
+    <link
+      rel="preload" as="image" fetchpriority="high"
+      imagesrcset={`${asset(logo[660].src)} 660w, ${asset(logo[1320].src)} 1320w`}
+      imagesizes="(min-width: 1400px) 1320px, calc(100vw - 32px)"
+    />
+    <link rel="icon" type="image/png" sizes="64x64" href={`${base}/favicon.png`} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${site.name} ${site.year}`} />
+    <meta property="og:description" content={site.description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="nojs">
+    <a class="skip" href="#main">Skip to content</a>
+    <slot />
+    <!-- Meta Pixel (ID 1128261679919664). Same standard snippet, but started after the page has loaded so it never slows the first paint. -->
+    <script is:inline>
+      window.addEventListener('load', function () {
+        (window.requestIdleCallback || function (f) { setTimeout(f, 1); })(function () {
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1128261679919664');
+          fbq('track', 'PageView');
+        }, { timeout: 3000 });
+      });
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1128261679919664&ev=PageView&noscript=1" alt="" /></noscript>
+    <script is:inline>
+      (function () {
+        var doc = document, root = doc.documentElement;
+        var burger = doc.getElementById('burger'), nav = doc.getElementById('nav');
+        doc.body.classList.remove('nojs');
+        function setMenu(o) { nav.classList.toggle('open', o); burger.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+        burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+        nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+        doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+        try {
+          var box = doc.getElementById('days'), p = box.getAttribute('data-date').split('-');
+          var now = new Date(), d = Math.ceil((new Date(+p[0], p[1] - 1, +p[2]) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
+          if (d > 0) { doc.getElementById('daysN').textContent = d; box.classList.add('on'); }
+        } catch (e) {}
+
+        var hasIO = 'IntersectionObserver' in window;
+        var els = doc.querySelectorAll('.rv');
+        if (hasIO) {
+          var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }); }, { threshold: 0.08 });
+          els.forEach(function (el) { io.observe(el); });
+          // Pause the scrolling date strip while it is off screen.
+          var mq = doc.querySelector('.marquee');
+          if (mq) new IntersectionObserver(function (es) { mq.classList.toggle('off', !es[0].isIntersecting); }).observe(mq);
+        } else { els.forEach(function (el) { el.classList.add('in'); }); }
+
+        // Desktop hover photos: download a band's photo on its first hover/focus, and (on good connections) warm them up one by one once the lineup is near.
+        if (window.matchMedia && matchMedia('(hover:hover) and (min-width:900px)').matches) {
+          var load = function (img) { if (img && img.getAttribute('data-src')) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); } };
+          doc.querySelectorAll('.row').forEach(function (row) {
+            var img = row.querySelector('.full img');
+            row.addEventListener('pointerenter', function () { load(img); }, { passive: true });
+            row.addEventListener('focusin', function () { load(img); });
+          });
+          var c = navigator.connection || {};
+          var good = !root.classList.contains('lite') && !c.saveData && (!c.effectiveType || c.effectiveType === '4g');
+          var lineup = doc.getElementById('lineup');
+          if (good && hasIO && lineup) {
+            var warm = new IntersectionObserver(function (es) {
+              if (!es[0].isIntersecting) return;
+              warm.disconnect();
+              var list = [].slice.call(doc.querySelectorAll('.full img[data-src]')), i = 0;
+              (function next() { if (i >= list.length) return; load(list[i++]); (window.requestIdleCallback || function (f) { setTimeout(f, 300); })(function () { setTimeout(next, 500); }); })();
+            }, { rootMargin: '500px 0px' });
+            warm.observe(lineup);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

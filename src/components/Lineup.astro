@@ -1,0 +1,58 @@
+---
+import bands from '../data/bands.json';
+import { asset, manifest } from '../lib/site';
+const num = (i: number) => String(i + 1).padStart(2, '0');
+---
+<section class="sec" id="lineup" aria-labelledby="lh">
+  <div class="sec-h">
+    <h2 id="lh">The <em>Lineup</em></h2>
+    <p>{bands.length} bands &middot; One night</p>
+  </div>
+  <ol class="wall">
+    {bands.map((b, i) => {
+      const photo = manifest[b.photo.src];
+      const logo = b.logo ? manifest[b.logo.src] : null;
+      const pos = `object-position:${b.photo.position}`;
+      return (
+        <li class="row rv" style={`--ar:${(photo.wide.width / photo.wide.height).toFixed(3)}`}>
+          <!-- Desktop hover photo: src is filled in on first hover/focus (see Base.astro), so nothing is downloaded until needed. -->
+          <div class="full" aria-hidden="true">
+            <img data-src={asset(photo.wide.src)} alt="" width={photo.wide.width} height={photo.wide.height} style={pos} decoding="async" />
+          </div>
+          <div class="row-in">
+            <div class="logo-slot">
+              {logo ? (
+                b.instagram ? (
+                  <a href={b.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${b.name} on Instagram`}>
+                    <img src={asset(logo.src)} width={logo.width} height={logo.height} alt="" loading="lazy" decoding="async" />
+                  </a>
+                ) : (
+                  <img src={asset(logo.src)} width={logo.width} height={logo.height} alt="" loading="lazy" decoding="async" />
+                )
+              ) : (
+                b.instagram ? (
+                  <a href={b.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${b.name} on Instagram`}>
+                    <span class="name-text">{b.name}</span>
+                  </a>
+                ) : (
+                  <p class="name-text" aria-hidden="true">{b.name}</p>
+                )
+              )}
+            </div>
+            <div class="info">
+              <h3 tabindex="0">{b.name}</h3>
+              <p class:list={['city', { 'tba-b': !b.city }]}>{b.city ?? '[TBA]'}</p>
+              <p class:list={['desc', { tba: !b.descriptor }]}>{b.descriptor ?? 'Genre [TBA]'}</p>
+              <p class:list={['fact', { 'tba-b': !b.fact }]}>{b.fact ?? 'More details [TBA]'}</p>
+            </div>
+            <div class="mob-ph">
+              <img src={asset(photo.mob.src)} alt={`${b.name} band photo`} width={photo.mob.width} height={photo.mob.height} loading="lazy" decoding="async" />
+            </div>
+          </div>
+          <span class="num" aria-hidden="true">{num(i)}</span>
+        </li>
+      );
+    })}
+  </ol>
+  <p class="note">Billing order TBA</p>
+</section>

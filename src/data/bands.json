@@ -1,0 +1,116 @@
+[
+  {
+    "slug": "kryptos",
+    "name": "Kryptos",
+    "instagram": "https://www.instagram.com/kryptosindia/",
+    "city": "Bangalore",
+    "descriptor": "Traditional heavy metal in the spirit of the 80s.",
+    "fact": "Formed 1998. First Indian heavy metal band at Wacken Open Air (2013). Opened for Iron Maiden in Bangalore, 2009.",
+    "logo": {
+      "src": "bands/kryptos-logo-bw.png",
+      "width": 800,
+      "height": 489
+    },
+    "photo": {
+      "src": "photos/kryptos.jpg",
+      "width": 2000,
+      "height": 1125,
+      "position": "50% 8%"
+    }
+  },
+  {
+    "slug": "gutslit",
+    "name": "Gutslit",
+    "instagram": "https://www.instagram.com/gutslit/",
+    "city": "Mumbai",
+    "descriptor": "Brutal death metal and grindcore.",
+    "fact": "Active nearly two decades. Toured 25+ countries. New single “I, Berzerker” (2026); fourth album due 2027.",
+    "logo": {
+      "src": "bands/gutslit-logo.png",
+      "width": 900,
+      "height": 398
+    },
+    "photo": {
+      "src": "photos/gutslit.jpg",
+      "width": 2000,
+      "height": 1125,
+      "position": "50% 50%"
+    }
+  },
+  {
+    "slug": "astrit",
+    "name": "Astrit",
+    "instagram": "https://www.instagram.com/astrit_h.h.m/",
+    "city": "Mumbai",
+    "descriptor": "“Heavy Hindustani Music”: progressive metalcore with Hindustani classical melody.",
+    "fact": "Their single “Kyun Rukun” threads Hindustani classical motifs through modern metal.",
+    "logo": {
+      "src": "bands/astrit-logo.png",
+      "width": 668,
+      "height": 170
+    },
+    "photo": {
+      "src": "photos/astrit.jpg",
+      "width": 2000,
+      "height": 1125,
+      "position": "50% 50%"
+    }
+  },
+  {
+    "slug": "fallen-letters",
+    "name": "Fallen Letters",
+    "city": "Bengaluru",
+    "descriptor": "Atmospheric progressive rock and metal, balancing melancholy with crushing heaviness.",
+    "fact": "Their debut album, Mindfractures, arrived in 2025.",
+    "instagram": "https://www.instagram.com/fallenlettersband/",
+    "logo": {
+      "src": "bands/fallen-letters-logo.png",
+      "width": 900,
+      "height": 429
+    },
+    "photo": {
+      "src": "photos/fallen-letters.jpg",
+      "width": 2000,
+      "height": 1125,
+      "position": "50% 8%"
+    }
+  },
+  {
+    "slug": "backrooms",
+    "name": "Backrooms",
+    "city": "Bengaluru",
+    "descriptor": "Modern progressive metal driven by technical riffs, heavy grooves, and metalcore energy.",
+    "fact": "Formed in Bengaluru in 2023.",
+    "instagram": "https://www.instagram.com/backroomsblr/",
+    "logo": {
+      "src": "bands/backrooms-logo.png",
+      "width": 782,
+      "height": 434
+    },
+    "photo": {
+      "src": "photos/backrooms.jpg",
+      "width": 2000,
+      "height": 1125,
+      "position": "50% 8%"
+    }
+  },
+  {
+    "slug": "haiku-like-imagination",
+    "name": "Haiku-Like Imagination",
+    "city": "Bengaluru",
+    "descriptor": "Math rock and post-hardcore with intricate rhythms, punchy aggression, and playful melodic turns.",
+    "fact": "The band took shape in 2017, growing from a studio project.",
+    "instagram": "https://www.instagram.com/imaginehaikulike/",
+    "logo": {
+      "src": "bands/hli-logo.png",
+      "width": 560,
+      "height": 264
+    },
+    "photo": {
+      "src": "photos/hli.jpg",
+      "width": 2000,
+      "height": 1125,
+      "position": "50% 50%"
+    }
+  }
+]

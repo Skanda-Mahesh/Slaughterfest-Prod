@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+
+# Client-supplied raw files: large, and the artist folders contain tech riders and contact details. Never commit.
+Partner Logos-*/
+Slaughterfest 2026 - Artists-*/

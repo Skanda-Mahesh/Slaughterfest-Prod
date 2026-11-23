@@ -1,0 +1,39 @@
+---
+import { asset, manifest, site, ticketHref, ticketAttrs } from '../lib/site';
+const logo = manifest['logos/slaughterfest-white.png'];
+const sb = manifest['partners/skillbox-white.png'];
+const burst = manifest['art/burst'];
+---
+<section class="hero" id="top" aria-labelledby="h1">
+  <p class="stamp">{site.producedBy} presents</p>
+  <div class="logo-wrap">
+    <!-- A single, subdued ash-grey burst sits behind the main logo. -->
+    <div class="art" aria-hidden="true">
+      <div class="burst-emboss"><img class="burst" src={asset(burst.src)} alt="" width={burst.width} height={burst.height} decoding="async" fetchpriority="low" /></div>
+    </div>
+    <h1 id="h1">
+      <img
+        src={asset(logo[1320].src)}
+        srcset={`${asset(logo[660].src)} 660w, ${asset(logo[1320].src)} 1320w`}
+        sizes="(min-width: 1400px) 1320px, calc(100vw - 32px)"
+        width={logo[1320].width} height={logo[1320].height}
+        alt={site.name} fetchpriority="high" decoding="async"
+      />
+    </h1>
+  </div>
+  <div class="hero-facts">
+    <div>
+      <p class="when">{site.dateLabel}</p>
+      <p class="where">{site.venue} &middot; {site.city}</p>
+      <p class="prod">Produced by {site.producedBy}</p>
+      <p class="days" id="days" data-date={site.date} aria-live="off"><b id="daysN"></b>days to go</p>
+    </div>
+    <div class="cta-stack">
+      <a class="sb" href={ticketHref} {...ticketAttrs}><img src={asset(sb.src)} width="112" height="112" alt={`Book tickets on ${site.ticketPartner}`} decoding="async" /></a>
+      <div class="cta-col">
+        <a class="btn" href={ticketHref} {...ticketAttrs}>Book tickets</a>
+        <a class="btn ghost" href="#lineup">See the lineup</a>
+      </div>
+    </div>
+  </div>
+</section>

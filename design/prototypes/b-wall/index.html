@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slaughter Fest 2026 | Prototype B</title>
+<meta name="description" content="Slaughter Fest 2026. Saturday 5 December 2026, The Humming Tree, Bangalore. Six bands. Produced by Surgeculture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0B0A0A; --ink:#171413; --ash:#5D5B57; --bone:#CFCBC0;
+  --oxblood:#7A2325; --blood-text:#C24A44; --wine:#3A1213;
+  --copper:#A47355; --copper-dk:#7E5B46; --gold:#B09E62; --olive:#5A4A22;
+  --f-black:"UnifrakturMaguntia","Pirata One","Old English Text MT",Georgia,serif;
+  --f-cap:"Cinzel","Cormorant SC","Trajan Pro",Georgia,serif;
+  --f-body:"EB Garamond",Garamond,Georgia,"Times New Roman",serif;
+  --f-ui:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --gut:clamp(16px,4vw,56px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--void);color:var(--bone);font-family:var(--f-body);font-size:18px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--bone);color:var(--void);padding:12px 18px;font-family:var(--f-ui);font-weight:600;z-index:200;text-decoration:none}
+.skip:focus{top:12px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tba{color:var(--ash);font-style:italic;letter-spacing:.06em}
+.tba-b{color:#8d8a84}
+
+/* header */
+header.top{position:sticky;top:0;z-index:100;background:rgba(11,10,10,.94);border-bottom:2px solid var(--copper-dk);backdrop-filter:blur(4px)}
+.top-in{display:flex;align-items:center;justify-content:space-between;min-height:64px;padding:0 var(--gut);gap:16px}
+.brand{font-family:var(--f-cap);font-size:13px;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;color:var(--bone);min-height:44px;display:flex;align-items:center}
+.brand b{color:var(--gold);font-weight:600;margin-left:.6em}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:6px}
+nav a{display:flex;align-items:center;min-height:44px;padding:0 14px;font-family:var(--f-cap);font-size:14px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--bone)}
+nav a:hover{color:var(--gold)}
+nav a.cta{background:var(--bone);color:var(--void);font-weight:700}
+nav a.cta:hover{background:var(--gold)}
+.burger{display:none;min-width:44px;min-height:44px;background:none;border:1px solid var(--copper-dk);color:var(--bone);font:600 13px var(--f-cap);letter-spacing:.2em;padding:0 14px;cursor:pointer}
+@media (max-width:760px){
+  .burger{display:block}
+  nav{position:absolute;left:0;right:0;top:100%;background:var(--ink);border-bottom:2px solid var(--copper-dk);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;padding:8px var(--gut) 16px;gap:0}
+  nav a{font-size:18px;border-bottom:1px solid #2a2523}
+}
+
+/* hero */
+.hero{position:relative;padding:clamp(40px,7vw,96px) var(--gut) clamp(36px,5vw,64px);overflow:hidden;isolation:isolate}
+.hero .block{position:absolute;z-index:-1;background:var(--oxblood);left:0;top:clamp(80px,14vw,200px);width:min(78%,1100px);height:clamp(150px,30vw,440px)}
+.hero .block::after{content:"";position:absolute;inset:0;border-right:2px solid var(--copper-dk)}
+.hero .stamp{font-family:var(--f-cap);font-size:clamp(12px,1.2vw,15px);letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin:0 0 clamp(10px,2vw,24px)}
+h1{margin:0;line-height:0}
+h1 img{width:min(100%,1320px);height:auto;filter:drop-shadow(0 6px 0 rgba(11,10,10,.55))}
+.hero-facts{display:grid;grid-template-columns:1fr auto;gap:24px 40px;align-items:end;margin-top:clamp(24px,4vw,56px);border-top:2px solid var(--copper);padding-top:22px}
+.when{font-family:var(--f-cap);text-transform:uppercase;letter-spacing:.16em;font-size:clamp(20px,3.3vw,44px);line-height:1.15;margin:0;font-weight:600}
+.where{font-family:var(--f-cap);text-transform:uppercase;letter-spacing:.24em;font-size:clamp(13px,1.5vw,18px);margin:12px 0 0;color:var(--bone)}
+.prod{font-family:var(--f-body);font-style:italic;margin:6px 0 0;color:#a9a59a}
+.days{display:none;margin:18px 0 0;font-family:var(--f-cap);letter-spacing:.2em;text-transform:uppercase;font-size:14px;color:var(--gold)}
+.days.on{display:block}
+.days b{font-family:var(--f-black);font-weight:400;font-size:44px;letter-spacing:0;margin-right:10px;vertical-align:-6px;color:var(--bone)}
+.cta-stack{display:flex;flex-wrap:wrap;gap:14px 18px;align-items:center}
+.sb img{width:112px;height:112px}
+.sb{display:block;border:1px solid var(--copper-dk);background:var(--ink);padding:4px}
+.sb:hover{border-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;font-family:var(--f-cap);font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;font-size:15px;background:var(--bone);color:var(--void);border:2px solid var(--bone)}
+.btn:hover{background:var(--gold);border-color:var(--gold)}
+.btn.ghost{background:transparent;color:var(--bone);border-color:var(--copper)}
+.btn.ghost:hover{background:var(--wine);color:var(--bone);border-color:var(--gold)}
+.cta-col{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+@media (max-width:760px){
+  .hero-facts{grid-template-columns:1fr}
+  .hero .block{width:92%}
+}
+
+/* marquee */
+.marquee{background:var(--ink);border-top:2px solid var(--copper);border-bottom:2px solid var(--copper);overflow:hidden;white-space:nowrap}
+.track{display:inline-flex;animation:slide 60s linear infinite;will-change:transform}
+.track span{font-family:var(--f-cap);font-size:clamp(16px,2.2vw,26px);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);padding:16px 0}
+.track span i{font-style:normal;color:var(--copper);margin:0 .9em}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* section titles */
+.sec{padding:clamp(56px,8vw,120px) 0 0}
+.sec-h{padding:0 var(--gut) 20px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.sec-h h2{font-family:var(--f-black);font-weight:400;font-size:clamp(64px,13vw,200px);line-height:.85;margin:0;color:var(--bone);letter-spacing:-.01em}
+.sec-h h2 em{font-style:normal;color:var(--blood-text)}
+.sec-h p{margin:0;font-family:var(--f-cap);letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold);padding-bottom:10px}
+
+/* lineup wall */
+.wall{border-top:6px solid var(--copper);margin:0;padding:0;list-style:none}
+.row{position:relative;border-bottom:6px solid var(--copper);overflow:hidden;isolation:isolate;background:var(--void)}
+.row-in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:center;gap:clamp(20px,4vw,64px);padding:clamp(20px,3vw,44px) var(--gut);min-height:clamp(220px,27vw,440px)}
+.num{position:absolute;right:var(--gut);top:12px;font-family:var(--f-cap);font-size:13px;letter-spacing:.3em;color:var(--gold);z-index:3}
+.logo-slot{display:flex;align-items:center;min-height:120px}
+.logo-slot img{width:auto;height:auto;max-width:100%;max-height:clamp(120px,21vw,330px);filter:drop-shadow(0 4px 0 rgba(11,10,10,.7))}
+.crop{position:relative;overflow:hidden;width:min(100%,clamp(300px,52vw,880px))}
+.crop img{max-width:none;max-height:none;height:auto;filter:drop-shadow(0 4px 0 rgba(11,10,10,.7))}
+.crop.bk{aspect-ratio:740/150}
+.crop.bk img{width:108.1%;margin-left:-6.76%;margin-top:-43.2%}
+.crop.hl{aspect-ratio:570/270;width:min(100%,clamp(260px,38vw,640px))}
+.crop.hl img{width:122.8%;margin-left:-12.3%;margin-top:-52.6%}
+.name-text{font-family:var(--f-black);font-weight:400;font-size:clamp(72px,15vw,240px);line-height:.9;margin:0;color:var(--bone);text-shadow:0 4px 0 rgba(11,10,10,.7)}
+.info h3{font-family:var(--f-cap);font-weight:700;font-size:clamp(20px,2.4vw,32px);letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px;color:var(--bone)}
+.city{font-family:var(--f-cap);letter-spacing:.28em;text-transform:uppercase;font-size:14px;color:var(--gold);margin:0 0 10px}
+.desc{margin:0 0 10px;font-size:clamp(18px,1.6vw,22px);line-height:1.4}
+.fact{margin:0;font-size:17px;color:#b4b0a5;border-left:2px solid var(--copper);padding-left:12px}
+.ph{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .9s ease;pointer-events:none;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.8)}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--void) 0%,rgba(11,10,10,.55) 38%,rgba(11,10,10,.2) 100%),linear-gradient(0deg,var(--void),transparent 40%);}
+.ph::before{content:"";position:absolute;inset:0;z-index:1;background:var(--wine);mix-blend-mode:color;opacity:.55}
+.ph.card{background:var(--bone)}
+.ph.card img{mix-blend-mode:multiply;filter:grayscale(1) contrast(1.1) brightness(.95)}
+.mob-ph{display:none}
+.row:hover{background:var(--wine)}
+@media (hover:hover) and (min-width:900px){
+  .row:hover .ph,.row:focus-within .ph{opacity:.62}
+  .row.kr:hover .ph,.row.kr:focus-within .ph{opacity:.4}
+  .row{transition:background .6s}
+}
+@media (max-width:899px){
+  .row-in{grid-template-columns:1fr;gap:18px;padding-top:34px}
+  .ph{display:none}
+  .mob-ph{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;border:2px solid var(--copper-dk);background:var(--ink)}
+  .mob-ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.8)}
+  .mob-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--void),transparent 55%)}
+  .mob-ph.card{background:var(--bone)}
+  .mob-ph.card img{mix-blend-mode:multiply;filter:grayscale(1) contrast(1.1) brightness(.95)}
+  .mob-ph.card::after{display:none}
+  .logo-slot img{max-height:clamp(110px,40vw,240px)}
+}
+.note{padding:16px var(--gut) 0;font-family:var(--f-cap);letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold);margin:0}
+
+/* info */
+.wrap{padding:0 var(--gut)}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:6px solid var(--copper);margin-top:0}
+.cell{padding:28px 24px 30px 0;border-bottom:1px solid var(--copper-dk);border-right:1px solid var(--copper-dk);padding-left:24px}
+.cell:nth-child(3n){border-right:0}
+.cell:nth-child(3n+1){padding-left:var(--gut)}
+.cell dt{font-family:var(--f-cap);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.cell dd{margin:0;font-family:var(--f-cap);font-weight:600;font-size:clamp(20px,2.4vw,32px);line-height:1.2;letter-spacing:.06em;text-transform:uppercase}
+.cell dd.t{font-family:var(--f-ui);font-weight:500;font-size:17px;text-transform:none;letter-spacing:0;color:var(--ash)}
+dl{margin:0}
+.info-grid dl{display:contents}
+@media (max-width:760px){
+  .info-grid{grid-template-columns:1fr 1fr}
+  .cell{padding:20px 14px}
+  .cell:nth-child(3n),.cell:nth-child(3n+1){padding-left:14px;border-right:1px solid var(--copper-dk)}
+  .cell:nth-child(2n){border-right:0}
+  .cell:nth-child(2n+1){padding-left:var(--gut)}
+}
+.faq{margin:44px var(--gut) 0;max-width:900px}
+.faq details{border-top:1px solid var(--copper-dk)}
+.faq details:last-child{border-bottom:1px solid var(--copper-dk)}
+.faq summary{cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--f-cap);letter-spacing:.12em;text-transform:uppercase;font-size:16px;list-style:none;padding:8px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-ui);color:var(--copper);font-size:26px}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{margin:0 0 20px;color:#bdb9ae;max-width:68ch}
+
+/* tickets */
+.tix{margin:clamp(56px,8vw,120px) 0 0;background:var(--oxblood);border-top:2px solid var(--copper);border-bottom:2px solid var(--copper);padding:clamp(40px,6vw,88px) var(--gut)}
+.tix-in{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:center;max-width:1300px}
+.tix h2{font-family:var(--f-black);font-weight:400;font-size:clamp(56px,10vw,150px);line-height:.88;margin:0 0 14px;color:var(--bone)}
+.tix p{margin:0 0 8px;font-size:20px;color:var(--bone)}
+.tix .price{font-family:var(--f-cap);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:18px;color:var(--bone)}
+.tix .price span{color:var(--bone);opacity:.75}
+.tix .sbbig{display:block;background:var(--void);border:2px solid var(--copper);padding:10px}
+.tix .sbbig img{width:clamp(160px,22vw,280px);height:auto}
+.tix .sbbig:hover{border-color:var(--gold)}
+.tix .btn{margin-top:18px;background:var(--void);color:var(--bone);border-color:var(--void)}
+.tix .btn:hover{background:var(--bone);color:var(--void);border-color:var(--bone)}
+@media (max-width:640px){.tix-in{grid-template-columns:1fr}}
+
+/* partners */
+.partners{padding:clamp(48px,6vw,88px) var(--gut) 0}
+.partners h2{font-family:var(--f-black);font-weight:400;font-size:clamp(44px,7vw,96px);line-height:.9;margin:0 0 24px}
+.pstrip{list-style:none;margin:0;padding:22px 0;border-top:2px solid var(--copper);border-bottom:2px solid var(--copper);display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center}
+.pstrip li{display:flex}
+.pstrip a,.pstrip .txt{display:flex;align-items:center;justify-content:center;height:124px;min-width:124px;text-decoration:none}
+.pstrip img{height:124px;width:auto;max-width:260px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .5s,opacity .5s}
+.pstrip a:hover img,.pstrip a:focus-visible img{filter:none;opacity:1}
+.pstrip .chip{background:var(--bone);padding:12px 20px;height:124px}
+.pstrip .chip img{height:92px;opacity:.8;filter:grayscale(1)}
+.pstrip .txt{font-family:var(--f-cap);letter-spacing:.2em;text-transform:uppercase;font-size:15px;color:var(--bone);opacity:.7;border:1px solid var(--copper-dk);padding:0 20px}
+.produced{margin:22px 0 0;font-family:var(--f-cap);letter-spacing:.3em;text-transform:uppercase;font-size:14px;color:var(--gold)}
+
+/* footer */
+footer{margin-top:clamp(56px,8vw,110px);background:var(--ink);border-top:6px solid var(--copper);padding:36px var(--gut) 44px;display:grid;grid-template-columns:1fr auto;gap:20px 40px;align-items:end}
+footer p{margin:0 0 6px;font-size:17px}
+footer .big{margin:0 0 16px;line-height:0}
+footer .big img{display:block;width:clamp(180px,24vw,340px);height:auto}
+footer .small{font-family:var(--f-ui);font-size:15px;color:#a9a59a}
+footer a{color:var(--blood-text);font-weight:700;font-size:18px}
+@media (max-width:640px){footer{grid-template-columns:1fr}}
+
+/* reveal + motion */
+.rv{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
+.rv.in{opacity:1;transform:none}
+.nojs .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="nojs">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#top">Slaughter Fest <b>2026</b></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#lineup">Lineup</a></li>
+        <li><a href="#info">Info</a></li>
+        <li><a href="#tickets-tbc">Tickets</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a class="cta" href="#tickets-tbc">Book tickets</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="h1">
+    <div class="block" aria-hidden="true"></div>
+    <p class="stamp">Surgeculture presents</p>
+    <h1 id="h1"><img src="../assets/logos/slaughterfest-white.png" width="1600" height="659" alt="Slaughter Fest"></h1>
+    <div class="hero-facts">
+      <div>
+        <p class="when">Saturday &middot; 5 December 2026</p>
+        <p class="where">The Humming Tree &middot; Bangalore</p>
+        <p class="prod">Produced by Surgeculture</p>
+        <p class="days" id="days" aria-live="off"><b id="daysN"></b>days to go</p>
+      </div>
+      <div class="cta-stack">
+        <a class="sb" href="#tickets-tbc"><img src="../assets/partners/skillbox-white.png" width="500" height="500" alt="Book tickets on SkillBox"></a>
+        <div class="cta-col">
+          <a class="btn" href="#tickets-tbc">Book tickets</a>
+          <a class="btn ghost" href="#lineup">See the lineup</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-label="Saturday 5 December 2026, The Humming Tree, Bangalore">
+    <div class="track" aria-hidden="true">
+      <span>Saturday 5 December 2026<i>&middot;</i>The Humming Tree<i>&middot;</i>Bangalore<i>&middot;</i>Saturday 5 December 2026<i>&middot;</i>The Humming Tree<i>&middot;</i>Bangalore<i>&middot;</i>Saturday 5 December 2026<i>&middot;</i>The Humming Tree<i>&middot;</i>Bangalore<i>&middot;</i></span>
+      <span>Saturday 5 December 2026<i>&middot;</i>The Humming Tree<i>&middot;</i>Bangalore<i>&middot;</i>Saturday 5 December 2026<i>&middot;</i>The Humming Tree<i>&middot;</i>Bangalore<i>&middot;</i>Saturday 5 December 2026<i>&middot;</i>The Humming Tree<i>&middot;</i>Bangalore<i>&middot;</i></span>
+    </div>
+  </div>
+
+  <section class="sec" id="lineup" aria-labelledby="lh">
+    <div class="sec-h">
+      <h2 id="lh">The <em>Lineup</em></h2>
+      <p>Six bands &middot; One night</p>
+    </div>
+    <ol class="wall">
+      <li class="row kr rv">
+        <div class="ph card" aria-hidden="true"><img src="../assets/photos/kryptos.jpg" alt="" width="1400" height="951" style="object-position:50% 40%" loading="lazy"></div>
+        <div class="row-in">
+          <div class="logo-slot"><img src="../assets/bands/kryptos-logo-bw.png" width="800" height="489" alt=""></div>
+          <div class="info">
+            <h3 tabindex="0">Kryptos</h3>
+            <p class="city">Bangalore</p>
+            <p class="desc">Traditional heavy metal in the spirit of the 80s.</p>
+            <p class="fact">Formed 1998. First Indian heavy metal band at Wacken Open Air (2013). Opened for Iron Maiden in Bangalore, 2009.</p>
+          </div>
+          <div class="mob-ph card"><img src="../assets/photos/kryptos.jpg" alt="Kryptos band photo" width="1400" height="951" style="object-position:50% 40%" loading="lazy"></div>
+        </div>
+        <span class="num" aria-hidden="true">01</span>
+      </li>
+      <li class="row rv">
+        <div class="ph" aria-hidden="true"><img src="../assets/photos/gutslit.jpg" alt="" width="1400" height="1935" style="object-position:50% 20%" loading="lazy"></div>
+        <div class="row-in">
+          <div class="logo-slot"><img src="../assets/bands/gutslit-logo.png" width="900" height="398" alt=""></div>
+          <div class="info">
+            <h3 tabindex="0">Gutslit</h3>
+            <p class="city">Mumbai</p>
+            <p class="desc">Brutal death metal and grindcore.</p>
+            <p class="fact">Active nearly two decades. Toured 25+ countries. New single &ldquo;I, Berzerker&rdquo; (2026); fourth album due 2027.</p>
+          </div>
+          <div class="mob-ph"><img src="../assets/photos/gutslit.jpg" alt="Gutslit band photo" width="1400" height="1935" style="object-position:50% 20%" loading="lazy"></div>
+        </div>
+        <span class="num" aria-hidden="true">02</span>
+      </li>
+      <li class="row rv">
+        <div class="ph" aria-hidden="true"><img src="../assets/photos/astrit.jpg" alt="" width="1080" height="1080" style="object-position:50% 100%" loading="lazy"></div>
+        <div class="row-in">
+          <div class="logo-slot"><p class="name-text" aria-hidden="true">Astrit</p></div>
+          <div class="info">
+            <h3 tabindex="0">Astrit</h3>
+            <p class="city">Mumbai</p>
+            <p class="desc">&ldquo;Heavy Hindustani Music&rdquo;: progressive metalcore with Hindustani classical melody.</p>
+            <p class="fact">Four-piece.</p>
+          </div>
+          <div class="mob-ph"><img src="../assets/photos/astrit.jpg" alt="Astrit band collage" width="1080" height="1080" style="object-position:50% 100%" loading="lazy"></div>
+        </div>
+        <span class="num" aria-hidden="true">03</span>
+      </li>
+      <li class="row rv">
+        <div class="ph" aria-hidden="true"><img src="../assets/photos/fallen-letters.jpg" alt="" width="1400" height="2100" style="object-position:50% 35%" loading="lazy"></div>
+        <div class="row-in">
+          <div class="logo-slot"><img src="../assets/bands/fallen-letters-logo.png" width="900" height="429" alt=""></div>
+          <div class="info">
+            <h3 tabindex="0">Fallen Letters</h3>
+            <p class="city tba-b">[TBA]</p>
+            <p class="desc tba">Genre [TBA]</p>
+            <p class="fact tba-b">More details [TBA]</p>
+          </div>
+          <div class="mob-ph"><img src="../assets/photos/fallen-letters.jpg" alt="Fallen Letters band photo" width="1400" height="2100" style="object-position:50% 35%" loading="lazy"></div>
+        </div>
+        <span class="num" aria-hidden="true">04</span>
+      </li>
+      <li class="row rv">
+        <div class="ph" aria-hidden="true"><img src="../assets/photos/backrooms.jpg" alt="" width="1400" height="1050" style="object-position:50% 50%" loading="lazy"></div>
+        <div class="row-in">
+          <div class="logo-slot"><div class="crop bk"><img src="../assets/bands/backrooms-logo.png" width="800" height="800" alt=""></div></div>
+          <div class="info">
+            <h3 tabindex="0">Backrooms</h3>
+            <p class="city tba-b">[TBA]</p>
+            <p class="desc tba">Genre [TBA]</p>
+            <p class="fact tba-b">More details [TBA]</p>
+          </div>
+          <div class="mob-ph"><img src="../assets/photos/backrooms.jpg" alt="Backrooms band photo" width="1400" height="1050" style="object-position:50% 50%" loading="lazy"></div>
+        </div>
+        <span class="num" aria-hidden="true">05</span>
+      </li>
+      <li class="row rv">
+        <div class="ph" aria-hidden="true"><img src="../assets/photos/hli.jpg" alt="" width="1400" height="935" style="object-position:50% 50%" loading="lazy"></div>
+        <div class="row-in">
+          <div class="logo-slot"><div class="crop hl"><img src="../assets/bands/hli-logo.png" width="700" height="875" alt=""></div></div>
+          <div class="info">
+            <h3 tabindex="0">Haiku Like Imagination</h3>
+            <p class="city tba-b">[TBA]</p>
+            <p class="desc tba">Genre [TBA]</p>
+            <p class="fact tba-b">More details [TBA]</p>
+          </div>
+          <div class="mob-ph"><img src="../assets/photos/hli.jpg" alt="Haiku Like Imagination band photo" width="1400" height="935" style="object-position:50% 50%" loading="lazy"></div>
+        </div>
+        <span class="num" aria-hidden="true">06</span>
+      </li>
+    </ol>
+    <p class="note">Billing order TBA</p>
+  </section>
+
+  <section class="sec" id="info" aria-labelledby="ih">
+    <div class="sec-h">
+      <h2 id="ih">The <em>Facts</em></h2>
+      <p id="venue">Venue &middot; The Humming Tree, Bangalore</p>
+    </div>
+    <div class="info-grid">
+      <dl>
+        <div class="cell rv"><dt>Date</dt><dd>Saturday<br>5 December 2026</dd></div>
+        <div class="cell rv"><dt>Venue</dt><dd>The Humming Tree<br>Bangalore</dd></div>
+        <div class="cell rv"><dt>Doors</dt><dd class="t">[TBA]</dd></div>
+        <div class="cell rv"><dt>Age policy</dt><dd class="t">[TBA]</dd></div>
+        <div class="cell rv"><dt>Ticket prices</dt><dd class="t">[TBA]</dd></div>
+        <div class="cell rv"><dt>Getting there</dt><dd class="t">[TBA]</dd></div>
+      </dl>
+    </div>
+    <div class="faq rv">
+      <details><summary>When and where is it?</summary><p>Saturday, 5 December 2026, at The Humming Tree, Bangalore. Produced by Surgeculture.</p></details>
+      <details><summary>Who is playing?</summary><p>Six bands are confirmed: Kryptos, Gutslit, Astrit, Fallen Letters, Backrooms and Haiku Like Imagination. Billing order is TBA.</p></details>
+      <details><summary>Where do I get tickets?</summary><p>Tickets go through SkillBox. The link is coming soon. Prices are [TBA].</p></details>
+      <details><summary>What time do doors open, and is there an age limit?</summary><p>Door times: [TBA]. Age policy: [TBA]. We will post both here once confirmed.</p></details>
+    </div>
+  </section>
+
+  <section class="tix" id="tickets-tbc" aria-labelledby="th">
+    <div class="tix-in">
+      <a class="sbbig" href="#tickets-tbc"><img src="../assets/partners/skillbox-white.png" width="500" height="500" alt="Book tickets on SkillBox"></a>
+      <div>
+        <h2 id="th">Tickets</h2>
+        <p>Tickets via SkillBox. Link coming soon.</p>
+        <p class="price">Prices <span>[TBA]</span></p>
+        <a class="btn" href="#tickets-tbc">Book tickets</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners" aria-labelledby="ph">
+    <h2 id="ph">Partners</h2>
+    <ul class="pstrip">
+      <li><a href="#tickets-tbc"><img src="../assets/partners/catalyst-studio.png" width="500" height="500" alt="Powered by Catalyst Studio"></a></li>
+      <li><a href="#top"><img src="../assets/partners/bsdk.png" alt="B$DK"></a></li>
+      <li><a href="#top"><img src="../assets/partners/metal-maniax.png" alt="Metal Maniax India"></a></li>
+      <li><a class="chip" href="#top"><img src="../assets/partners/sinusoidal.png" alt="Sinusoidal"></a></li>
+      <li><span class="txt">Gigman Media</span></li>
+    </ul>
+    <p class="produced">Produced by Surgeculture</p>
+  </section>
+</main>
+
+<footer>
+  <div>
+    <p class="big"><img src="../assets/logos/slaughterfest-white.png" alt="Slaughter Fest" width="1600" height="659"></p>
+    <p>&copy; 2026 Slaughter Fest &middot; Produced by Surgeculture</p>
+    <p>The Humming Tree, Bangalore &middot; Saturday 5 December 2026</p>
+    <p class="small">Prototype, details subject to change.</p>
+  </div>
+  <a href="#top">Back to top</a>
+</footer>
+
+<script>
+(function(){
+  var b=document.documentElement;
+  document.body.classList.remove('nojs');
+  var burger=document.getElementById('burger'),nav=document.getElementById('nav');
+  function setMenu(o){nav.classList.toggle('open',o);burger.setAttribute('aria-expanded',o?'true':'false')}
+  burger.addEventListener('click',function(){setMenu(burger.getAttribute('aria-expanded')!=='true')});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+  try{
+    var now=new Date(),t=new Date(2026,11,5);
+    var d=Math.ceil((t-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/864e5);
+    if(d>0){document.getElementById('daysN').textContent=d;document.getElementById('days').classList.add('on')}
+  }catch(e){}
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.08});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+})();
+</script>
+</body>
+</html>

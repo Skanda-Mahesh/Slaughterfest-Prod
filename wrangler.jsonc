@@ -1,0 +1,12 @@
+// Cloudflare Worker for the Slaughter Fest site: serves the static Astro build (dist/) at
+// slaughterfest.surgeculture.com. Cloudflare applies dist/_headers (copied from public/_headers).
+// Production deploys run automatically from `main` (Workers Builds: build `npm run build`, deploy `npx wrangler deploy`).
+{
+  "name": "slaughterfest",
+  "account_id": "8386b6df8cba4ddffad44f2a520d82a5", // the account that holds the surgeculture.com zone
+  "compatibility_date": "2026-11-20",
+  "assets": { "directory": "./dist" },
+  "routes": [
+    { "pattern": "slaughterfest.surgeculture.com", "custom_domain": true }
+  ]
+}

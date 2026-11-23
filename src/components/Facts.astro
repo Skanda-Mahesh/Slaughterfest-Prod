@@ -1,0 +1,40 @@
+---
+import bands from '../data/bands.json';
+import { site } from '../lib/site';
+const tba = '[TBA]';
+const names = bands.map((b) => b.name);
+const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0];
+const cells = [
+  { label: 'Date', html: 'Saturday<br>5 December 2026' },
+  { label: 'Venue', html: `${site.venue}<br>${site.city}` },
+  { label: 'Doors', text: site.doors },
+  { label: 'Ticket prices', text: site.prices },
+  { label: 'Getting there', text: site.gettingThere },
+];
+---
+<section class="sec" id="info" aria-labelledby="ih">
+  <div class="sec-h">
+    <h2 id="ih">The <em>Facts</em></h2>
+  </div>
+  <div class="info-grid">
+    <dl>
+      {cells.map((c) => (
+        <div class:list={['cell', 'rv', { wide: c.label === 'Getting there' || c.label === 'Ticket prices', 'price-cell': c.label === 'Ticket prices' }]}>
+          <dt>{c.label}</dt>
+          {c.label === 'Getting there' ? (
+            <>
+              <dd class="t">{c.text}</dd>
+              <a class="btn ghost map-link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.gettingThere)}`} target="_blank" rel="noopener">Open in Google Maps <span aria-hidden="true">↗</span></a>
+            </>
+          ) : c.html ? <dd set:html={c.html} /> : <dd class="t">{c.text ?? tba}</dd>}
+        </div>
+      ))}
+    </dl>
+  </div>
+  <div class="faq rv">
+    <details><summary>When and where is it?</summary><p>{site.dateLong}, at {site.venue}, {site.city}. Produced by {site.producedBy}.</p></details>
+    <details><summary>Who is playing?</summary><p>{bands.length} bands are confirmed: {list}. Billing order is TBA.</p></details>
+    <details><summary>Where do I get tickets?</summary><p>Tickets are sold through {site.ticketPartner}. Prices range from {site.prices}; check the booking page for current availability. {site.ticketPolicy}</p></details>
+    <details><summary>What time do doors open?</summary><p>Doors open at {site.doors}.</p></details>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+---
+import { site, ticketHref, ticketAttrs } from '../lib/site';
+---
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#top">{site.name} <b>{site.year}</b></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#lineup">Lineup</a></li>
+        <li><a href="#info">Info</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a class="cta" href={ticketHref} {...ticketAttrs}>Book tickets</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
