@@ -19,6 +19,30 @@
     "height": 623,
     "kb": 91
   },
+  "art/stamp-mammoth": {
+    "src": "art/stamp-mammoth.webp",
+    "width": 900,
+    "height": 608,
+    "kb": 75
+  },
+  "art/stamp-crown": {
+    "src": "art/stamp-crown.webp",
+    "width": 900,
+    "height": 524,
+    "kb": 94
+  },
+  "art/stamp-reaper": {
+    "src": "art/stamp-reaper.webp",
+    "width": 640,
+    "height": 1023,
+    "kb": 98
+  },
+  "art/altar": {
+    "src": "art/altar.webp",
+    "width": 1100,
+    "height": 1192,
+    "kb": 301
+  },
   "photos/kryptos.jpg": {
     "wide": {
       "src": "photos/kryptos-wide.webp",
@@ -47,18 +71,18 @@
       "kb": 26
     }
   },
-  "photos/astrit.jpg": {
+  "photos/hli.jpg": {
     "wide": {
-      "src": "photos/astrit-wide.webp",
+      "src": "photos/haiku-like-imagination-wide.webp",
       "width": 1600,
       "height": 900,
-      "kb": 57
+      "kb": 37
     },
     "mob": {
-      "src": "photos/astrit-mob.webp",
+      "src": "photos/haiku-like-imagination-mob.webp",
       "width": 720,
       "height": 450,
-      "kb": 35
+      "kb": 18
     }
   },
   "photos/fallen-letters.jpg": {
@@ -89,18 +113,18 @@
       "kb": 14
     }
   },
-  "photos/hli.jpg": {
+  "photos/astrit.jpg": {
     "wide": {
-      "src": "photos/haiku-like-imagination-wide.webp",
+      "src": "photos/astrit-wide.webp",
       "width": 1600,
       "height": 900,
-      "kb": 37
+      "kb": 57
     },
     "mob": {
-      "src": "photos/haiku-like-imagination-mob.webp",
+      "src": "photos/astrit-mob.webp",
       "width": 720,
       "height": 450,
-      "kb": 18
+      "kb": 35
     }
   },
   "bands/kryptos-logo-bw.png": {
@@ -113,10 +137,10 @@
     "width": 720,
     "height": 318
   },
-  "bands/astrit-logo.png": {
-    "src": "bands/astrit-logo.webp",
-    "width": 668,
-    "height": 170
+  "bands/hli-logo.png": {
+    "src": "bands/hli-logo.webp",
+    "width": 560,
+    "height": 264
   },
   "bands/fallen-letters-logo.png": {
     "src": "bands/fallen-letters-logo.webp",
@@ -128,10 +152,10 @@
     "width": 720,
     "height": 400
   },
-  "bands/hli-logo.png": {
-    "src": "bands/hli-logo.webp",
-    "width": 560,
-    "height": 264
+  "bands/astrit-logo.png": {
+    "src": "bands/astrit-logo.webp",
+    "width": 668,
+    "height": 170
   },
   "partners/catalyst-studio.png": {
     "src": "partners/catalyst-studio.webp",
@@ -153,14 +177,14 @@
     "width": 576,
     "height": 250
   },
-  "partners/skillbox-white.png": {
-    "src": "partners/skillbox-white.webp",
-    "width": 500,
-    "height": 500
-  },
   "partners/gigman-media.png": {
     "src": "partners/gigman-media.webp",
     "width": 856,
     "height": 250
+  },
+  "partners/skillbox-white.png": {
+    "src": "partners/skillbox-white.webp",
+    "width": 500,
+    "height": 500
   }
 }

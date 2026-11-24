@@ -2,6 +2,8 @@
 import bands from '../data/bands.json';
 import { asset, manifest } from '../lib/site';
 const num = (i: number) => String(i + 1).padStart(2, '0');
+// Faint engraved stamps from the poster artwork, one behind each band's details, cycling through the set.
+const stamps = ['mammoth', 'crown', 'reaper'].map((k) => ({ k, ...manifest[`art/stamp-${k}`] }));
 ---
 <section class="sec" id="lineup" aria-labelledby="lh">
   <div class="sec-h rv">
@@ -13,8 +15,11 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
       const photo = manifest[b.photo.src];
       const logo = b.logo ? manifest[b.logo.src] : null;
       const pos = `object-position:${b.photo.position}`;
+      const st = stamps[i % stamps.length];
+      const flip = Math.floor(i / stamps.length) % 2 === 1;
       return (
         <li class="row rv" style={`--ar:${(photo.wide.width / photo.wide.height).toFixed(3)}`}>
+          <img class:list={['engr', `engr-${st.k}`, { flip }]} src={asset(st.src)} width={st.width} height={st.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
           <!-- Desktop hover photo: src is filled in on first hover/focus (see Base.astro), so nothing is downloaded until needed. -->
           <div class="full" aria-hidden="true">
             <img data-src={asset(photo.wide.src)} alt="" width={photo.wide.width} height={photo.wide.height} style={pos} decoding="async" />

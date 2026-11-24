@@ -1,10 +1,12 @@
 ---
 import { asset, manifest, site, ticketHref, ticketAttrs } from '../lib/site';
 const sb = manifest['partners/skillbox-white.png'];
+const altar = manifest['art/altar'];
 // Ticket status labels. Set "status" on a ticket option in site.json; leave it out for no tag.
 const statusLabels: Record<string, string> = { 'sold-out': 'Sold out', 'running-low': 'Running low', upcoming: 'Upcoming' };
 ---
 <section class="tix" id="tickets" aria-labelledby="th">
+  <img class="altar" src={asset(altar.src)} width={altar.width} height={altar.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
   <div class="tix-in rv">
     <a class="sbbig" href={ticketHref} {...ticketAttrs}><img src={asset(sb.src)} width={sb.width} height={sb.height} alt={`Book tickets on ${site.ticketPartner}`} loading="lazy" decoding="async" /></a>
     <div>

@@ -55,7 +55,7 @@ src/
   pages/        index.astro
 assets-src/     master images: edit or replace these
 public/assets/  generated web images + og.jpg (do not edit by hand: run `npm run assets`)
-tools/          optimise-assets.mjs (the image pipeline)
+tools/          optimise-assets.mjs (the image pipeline), extract-psd-art.py (poster PSD to engraving masters)
 design/         research, design directions, palette, early prototypes (not part of the build)
 ```
 
@@ -64,6 +64,7 @@ design/         research, design directions, palette, early prototypes (not part
 Built to be fast on weak PCs and slow connections: about 1.5 MB in total, 12 requests and roughly 0.5 MB for the first screen, with no runtime filters, blend modes, masks or blurs.
 
 - **Images are baked.** `npm run assets` turns the masters in `assets-src/` into WebP files in `public/assets/` and writes `src/data/manifest.json`. Tints, photo grading, the embossed ring and burst, fades and the logo's shadow are all rendered into the pictures, so the browser only paints plain images. Re-run it after changing a master image or adding a band.
+- **Poster engravings:** the faint stamps behind the lineup rows (mammoth, gate crown, reaper) and the altar behind Tickets are the poster's own line art, cut out of `psd/SLAUGHTER FEST 2026 colour.psd` by `tools/extract-psd-art.py` into `assets-src/art/engraving-*.png`. The tint and strength are set in `engravings()` in `tools/optimise-assets.mjs`. Only re-run the extract script if the artwork changes (needs `pip install psd-tools`).
 - **Add a band photo or logo:** put the file in `assets-src/photos/` (16:9 works best) or `assets-src/bands/`, point `src/data/bands.json` at it, then run `npm run assets`.
 - **Lazy by default.** The big desktop hover photos download only when you first hover a band (and are warmed up one by one on good connections). Phones never download them.
 - **Fonts:** self-hosted, Latin subset only.
@@ -76,7 +77,7 @@ Palette and mood come from the client's 2026 poster; see `design/PALETTE.md`. Th
 
 ## Client files
 
-The raw partner and artist folders (`Partner Logos-*`, `Slaughterfest 2026 - Artists-*`) are git-ignored. They are large and include tech riders and contact details, which must not be published. Only resized web copies are in `public/assets/`.
+The raw partner and artist folders (`Partner Logos-*`, `Slaughterfest 2026 - Artists-*`) and the poster PSDs (`psd/`, ~400 MB) are git-ignored. They are large and include tech riders and contact details, which must not be published. Only resized web copies are in `public/assets/`.
 
 ## Before launch
 

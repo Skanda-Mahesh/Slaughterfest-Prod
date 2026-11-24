@@ -166,14 +166,63 @@ async function art() {
   });
 }
 
+// ---------- engravings: line art salvaged from the poster PSD (tools/extract-psd-art.py) ----------
+// Masters are white ink on transparent. Each is redrawn in one flat colour at a low, fixed opacity, with an optional soft edge,
+// so the page shows them as faint printed stamps without any CSS opacity, filter or blend mode.
+async function engraving({ file, name, outW, color, alphaMul, fade = () => 1 }) {
+  const { data, info } = await sharp(path.join(SRC, 'art', file)).resize({ width: outW }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const W = info.width, H = info.height;
+  const out = Buffer.alloc(W * H * 4);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const i = (y * W + x) * 4;
+    out[i] = color[0]; out[i + 1] = color[1]; out[i + 2] = color[2];
+    out[i + 3] = Math.round(data[i + 3] * alphaMul * fade((x + 0.5) / W, (y + 0.5) / H));
+  }
+  const r = await save(out, W, H, 4, `art/${name}.webp`, { quality: 60, alphaQuality: 50, effort: 6 });
+  manifest[`art/${name}`] = r;
+  console.log('  ', name, r.width + 'x' + r.height, r.kb + ' KB');
+}
+const smooth = (e0, e1, v) => { const t = Math.min(1, Math.max(0, (v - e0) / (e1 - e0))); return t * t * (3 - 2 * t); };
+async function engravings() {
+  // Lineup stamps: copper ink at low strength on the page black (cf. the clay stamps on reincarock.surgeculture.com).
+  const copper = [164, 115, 85];
+  const stamp = { color: copper, alphaMul: 0.2, outW: 900 };
+  await engraving({ ...stamp, file: 'engraving-mammoth.png', name: 'stamp-mammoth', fade: (u, v) => smooth(0, 0.18, u) * smooth(1, 0.8, v) });
+  await engraving({ ...stamp, file: 'engraving-crown.png', name: 'stamp-crown', fade: (u, v) => smooth(1, 0.7, v) });
+  await engraving({ ...stamp, outW: 640, file: 'engraving-reaper.png', name: 'stamp-reaper', fade: (u, v) => smooth(1, 0.85, v) });
+  // Tickets: the whole altar in a deep wine ink on the oxblood panel, fading out towards the base.
+  await engraving({ file: 'engraving-altar.png', name: 'altar', outW: 1100, color: [42, 11, 12], alphaMul: 0.32, fade: (u, v) => smooth(1, 0.55, v) });
+}
+
 console.log('logos');
 await logo();
-await sharp(path.join(SRC, 'logos/slaughterfest-white.png'))
-  .resize({ width: 64, height: 64, fit: 'contain', background: '#0B0A0A' })
+// Favicons: the full wordmark is ~2.4:1 and turns to mush at tab size, so use just the "S".
+// The S touches the L (narrowest join at x≈304) and sits above the spiked underline (gap at y≈322).
+// Two steps on purpose: in one pipeline sharp trims before it extracts, which shifts the crop.
+const faviconS = await sharp(
+  await sharp(path.join(SRC, 'logos/slaughterfest-white.png'))
+    .extract({ left: 0, top: 0, width: 304, height: 322 })
+    .png()
+    .toBuffer(),
+)
+  .trim()
   .png()
-  .toFile('public/favicon.png');
+  .toBuffer();
+for (const [file, size] of [['favicon.png', 64], ['apple-touch-icon.png', 180], ['icon-512.png', 512]]) {
+  const pad = Math.round(size * (file === 'favicon.png' ? 0.04 : 0.14)); // touch icons get rounded corners
+  const inner = await sharp(faviconS)
+    .resize(size - 2 * pad, size - 2 * pad, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .toBuffer();
+  await sharp(inner)
+    .extend({ top: pad, bottom: pad, left: pad, right: pad, background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .flatten({ background: '#0B0A0A' })
+    .png({ compressionLevel: 9, palette: true })
+    .toFile(path.join('public', file));
+}
 console.log('hero art');
 await art();
+console.log('engravings');
+await engravings();
 console.log('photos');
 await photos();
 console.log('band logos');

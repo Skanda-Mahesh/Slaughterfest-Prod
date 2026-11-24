@@ -1,6 +1,6 @@
 # SlaughterFest 2026 palette and vibe
 
-Sampled from the client's own 2026 poster (title, frame, armour, skulls, panel). Use the palette and the mood only. Do not reuse the poster artwork.
+Sampled from the client's own 2026 poster (title, frame, armour, skulls, panel). The client has since supplied the poster PSDs (`psd/`, git-ignored). Line-art elements from them (altar, mammoth, gate crown, reaper) are used as faint baked stamps; see README.
 
 ## Facts on the poster
 - Saturday, 5 December 2026, The Humming Tree (Bangalore). Produced by Surgeculture.
