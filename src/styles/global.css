@@ -33,9 +33,13 @@ nav ul{list-style:none;margin:0;padding:0;display:flex;gap:6px}
 nav a{display:flex;align-items:center;min-height:44px;padding:0 14px;font-family:var(--f-cap);font-size:14px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:var(--bone)}
 nav a:hover{color:var(--gold)}
 nav a.cta{background:var(--bone);color:var(--void);font-weight:700;border:2px solid var(--bone)}
+nav{margin-left:auto}
+.ig{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin-left:4px;color:#a9a59a;flex:none}
+.ig:hover,.ig:focus-visible{color:var(--gold)}
 .burger{display:none;min-width:44px;min-height:44px;background:none;border:1px solid var(--copper-dk);color:var(--bone);font:600 13px var(--f-cap);letter-spacing:.2em;padding:0 14px;cursor:pointer}
 @media (max-width:760px){
-  .burger{display:block}
+  .burger{display:block;order:3}
+  .ig{order:2;margin-left:auto}
   nav{position:absolute;left:0;right:0;top:100%;background:var(--ink);border-bottom:2px solid var(--copper-dk);display:none}
   nav.open{display:block}
   nav ul{flex-direction:column;padding:8px var(--gut) 16px;gap:0}
@@ -240,6 +244,7 @@ footer p{margin:0 0 6px;font-size:17px}
 footer .big{margin:0 0 16px;line-height:0}
 footer .big img{display:block;width:clamp(180px,24vw,340px);height:auto}
 footer .small{font-family:var(--f-ui);font-size:15px;color:#a9a59a}
+footer .small a.ig-txt{font-size:inherit;font-weight:400;min-height:0;display:inline;color:var(--bone);text-underline-offset:3px}
 footer a{color:#E8706A;font-weight:700;font-size:18px;display:inline-flex;align-items:center;min-height:44px}
 @media (max-width:640px){footer{grid-template-columns:1fr}}
 
