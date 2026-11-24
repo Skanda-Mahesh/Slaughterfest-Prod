@@ -85,5 +85,5 @@ The raw partner and artist folders (`Partner Logos-*`, `Slaughterfest 2026 - Art
 - Confirm billing order and the details for Fallen Letters, Backrooms and Haiku Like Imagination.
 - A logo file for Astrit, and a clean venue logo if wanted.
 - Confirm permission to show the partner logos, and add partner links.
-- Add `site` URL, then check the social preview image (`public/assets/og.jpg`).
+- Link previews: the title and text are `shareTitle` / `shareDescription` in `site.json`; the picture is `public/assets/og.jpg`, drawn by `og()` in `tools/optimise-assets.mjs`. After redrawing it, bump `?v=` on `ogImage` in `Base.astro` so apps refetch it.
 - Convert photos to WebP/AVIF if page weight matters (currently about 4 MB total).

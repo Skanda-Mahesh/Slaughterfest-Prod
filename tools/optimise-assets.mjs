@@ -194,6 +194,40 @@ async function engravings() {
   await engraving({ file: 'engraving-altar.png', name: 'altar', outW: 1100, color: [42, 11, 12], alphaMul: 0.32, fade: (u, v) => smooth(1, 0.55, v) });
 }
 
+// ---------- social share image (WhatsApp, Instagram DMs, iMessage, X…): public/assets/og.jpg, 1200x630 ----------
+// Everything important sits in the middle, because some apps crop the preview to a square.
+async function og() {
+  const W = 1200, H = 630;
+  const altar = await sharp(path.join(SRC, 'art/engraving-altar.png')).resize({ height: 760 }).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const aw = altar.info.width, ah = altar.info.height, ad = altar.data;
+  for (let y = 0; y < ah; y++) for (let x = 0; x < aw; x++) {
+    const i = (y * aw + x) * 4;
+    ad[i] = 122; ad[i + 1] = 35; ad[i + 2] = 37; // oxblood ink
+    ad[i + 3] = Math.round(ad[i + 3] * 0.42 * smooth(1, 0.55, y / ah));
+  }
+  // crop to the canvas height (the altar starts 40px above the top edge)
+  const altarPng = await sharp(ad, { raw: { width: aw, height: ah, channels: 4 } }).extract({ left: 0, top: 40, width: aw, height: H }).png().toBuffer();
+  const logoPng = await sharp(path.join(SRC, 'logos/slaughterfest-white.png')).resize({ width: 800 }).png().toBuffer();
+  const lh = Math.round(659 * 800 / 1600);
+  const text = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
+    <style>text{font-family:Georgia,'Georgia Pro',serif;text-anchor:middle}</style>
+    <text x="600" y="62" font-size="19" letter-spacing="7" fill="#B09E62">SURGECULTURE PRESENTS</text>
+    <rect x="300" y="452" width="600" height="2" fill="#A47355"/>
+    <text x="600" y="512" font-size="44" font-weight="700" letter-spacing="4" fill="#B09E62">SAT · 5 DECEMBER 2026</text>
+    <text x="600" y="560" font-size="25" letter-spacing="6" fill="#CFCBC0">THE HUMMING TREE · BANGALORE</text>
+    <text x="600" y="602" font-size="19" font-style="italic" letter-spacing="1" fill="#a9a59a">Six bands. One pit. One night.</text>
+  </svg>`);
+  await sharp({ create: { width: W, height: H, channels: 3, background: '#0B0A0A' } })
+    .composite([
+      { input: altarPng, left: Math.round((W - aw) / 2), top: 0 },
+      { input: logoPng, left: 200, top: 88 },
+      { input: text, left: 0, top: 0 },
+    ])
+    .jpeg({ quality: 86, mozjpeg: true })
+    .toFile(path.join(OUT, 'og.jpg'));
+  console.log('   og.jpg', W + 'x' + H, kb(path.join(OUT, 'og.jpg')) + ' KB', '(logo height', lh + ')');
+}
+
 console.log('logos');
 await logo();
 // Favicons: the full wordmark is ~2.4:1 and turns to mush at tab size, so use just the "S".
@@ -223,6 +257,8 @@ console.log('hero art');
 await art();
 console.log('engravings');
 await engravings();
+console.log('share image');
+await og();
 console.log('photos');
 await photos();
 console.log('band logos');
