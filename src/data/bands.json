@@ -38,19 +38,19 @@
     }
   },
   {
-    "slug": "astrit",
-    "name": "Astrit",
-    "instagram": "https://www.instagram.com/astrit_h.h.m/",
-    "city": "Mumbai",
-    "descriptor": "“Heavy Hindustani Music”: progressive metalcore with Hindustani classical melody.",
-    "fact": "Their single “Kyun Rukun” threads Hindustani classical motifs through modern metal.",
+    "slug": "haiku-like-imagination",
+    "name": "Haiku-Like Imagination",
+    "city": "Bengaluru",
+    "descriptor": "Math rock and post-hardcore with intricate rhythms, punchy aggression, and playful melodic turns.",
+    "fact": "The band took shape in 2017, growing from a studio project.",
+    "instagram": "https://www.instagram.com/imaginehaikulike/",
     "logo": {
-      "src": "bands/astrit-logo.png",
-      "width": 668,
-      "height": 170
+      "src": "bands/hli-logo.png",
+      "width": 560,
+      "height": 264
     },
     "photo": {
-      "src": "photos/astrit.jpg",
+      "src": "photos/hli.jpg",
       "width": 2000,
       "height": 1125,
       "position": "50% 50%"
@@ -95,22 +95,23 @@
     }
   },
   {
-    "slug": "haiku-like-imagination",
-    "name": "Haiku-Like Imagination",
-    "city": "Bengaluru",
-    "descriptor": "Math rock and post-hardcore with intricate rhythms, punchy aggression, and playful melodic turns.",
-    "fact": "The band took shape in 2017, growing from a studio project.",
-    "instagram": "https://www.instagram.com/imaginehaikulike/",
+    "slug": "astrit",
+    "name": "Astrit",
+    "instagram": "https://www.instagram.com/astrit_h.h.m/",
+    "city": "Mumbai",
+    "descriptor": "“Heavy Hindustani Music”: progressive metalcore with Hindustani classical melody.",
+    "fact": "Their single “Kyun Rukun” threads Hindustani classical motifs through modern metal.",
     "logo": {
-      "src": "bands/hli-logo.png",
-      "width": 560,
-      "height": 264
+      "src": "bands/astrit-logo.png",
+      "width": 668,
+      "height": 170
     },
     "photo": {
-      "src": "photos/hli.jpg",
+      "src": "photos/astrit.jpg",
       "width": 2000,
       "height": 1125,
-      "position": "50% 50%"
+      "position": "50% 50%",
+      "darken": 0.35
     }
   }
 ]

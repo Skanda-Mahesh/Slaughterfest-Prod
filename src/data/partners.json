@@ -1,7 +1,7 @@
 [
-  { "name": "Catalyst Studio", "alt": "Powered by Catalyst Studio", "logo": "partners/catalyst-studio.png", "url": null },
-  { "name": "B$DK", "alt": "B$DK, Bangalore Scene Distortion Kult", "logo": "partners/bsdk.png", "url": null },
-  { "name": "Metal Maniax India", "alt": "Metal Maniax India", "logo": "partners/metal-maniax.png", "url": null },
-  { "name": "Sinusoidal Music", "alt": "Sinusoidal Music", "logo": "partners/sinusoidal.png", "url": null, "chip": true },
-  { "name": "Gigman Media", "logo": null, "url": null }
+  { "name": "Catalyst Studio", "alt": "Powered by Catalyst Studio", "logo": "partners/catalyst-studio.png", "dark": true, "url": "https://www.instagram.com/catalyststudio.in/" },
+  { "name": "B$DK", "alt": "B$DK, Bangalore Scene Distortion Kult", "logo": "partners/bsdk.png", "url": "https://www.instagram.com/bangalorescenedistortionkult/" },
+  { "name": "Metal Maniax India", "alt": "Metal Maniax India", "logo": "partners/metal-maniax.png", "url": "https://www.instagram.com/metalmaniaxindia/" },
+  { "name": "Sinusoidal Music", "alt": "Sinusoidal Music", "logo": "partners/sinusoidal.png", "url": "https://www.instagram.com/sinusoidal.music/" },
+  { "name": "Gigman Media", "alt": "Gigman Media", "logo": "partners/gigman-media.png", "dark": true, "url": "https://www.instagram.com/gigmanmedia/" }
 ]

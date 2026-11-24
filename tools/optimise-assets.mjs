@@ -27,10 +27,16 @@ async function save(raw, w, h, ch, rel, opts) {
 }
 
 // ---------- plain alpha images (band logos, partner logos, ticket button) ----------
-async function plain(srcRel, maxW, maxH, key) {
+async function plain(srcRel, maxW, maxH, key, dark = false) {
   const input = path.join(SRC, srcRel);
   const out = srcRel.replace(/\.(png|jpe?g)$/i, '.webp');
   let p = sharp(input).resize({ width: maxW, height: maxH, fit: 'inside', withoutEnlargement: true });
+  // "dark": a one-colour (white) logo is redrawn in the page black, so it reads on the light partner cards
+  if (dark) {
+    const raw = await p.ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    for (let i = 0; i < raw.data.length; i += 4) { raw.data[i] = 11; raw.data[i + 1] = 10; raw.data[i + 2] = 10; }
+    p = sharp(raw.data, { raw: { width: raw.info.width, height: raw.info.height, channels: 4 } });
+  }
   const info = await p.webp({ quality: 82, alphaQuality: 90, effort: 6 }).toFile(path.join(OUT, out));
   manifest[key ?? srcRel] = { src: out, width: info.width, height: info.height };
   console.log('  ', out, info.width + 'x' + info.height, kb(path.join(OUT, out)) + ' KB');
@@ -43,7 +49,9 @@ async function photos() {
     const srcRel = b.photo.src;
     const input = path.join(SRC, srcRel);
     // wide: grayscale, contrast, rose duotone, wine wash, darker top for the text
+    // Optional "darken" on a band's photo in bands.json (0 to 1, e.g. 0.3) dims a bright photo so the text over it stays readable.
     {
+      const darken = b.photo.darken ?? 0;
       const { data, info } = await sharp(input).resize(W, H, { fit: 'cover' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
       const out = Buffer.alloc(W * H * 3);
       const dark = [18, 8, 10], light = [214, 176, 168], wine = [58, 18, 19], void_ = [11, 10, 10];
@@ -53,7 +61,7 @@ async function photos() {
         for (let x = 0; x < W; x++) {
           const i = (y * W + x) * 3;
           let l = (0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]) / 255;
-          l = clamp(((l - 0.5) * 1.1 + 0.5) * 0.9, 0, 1);
+          l = clamp(((l - 0.5) * 1.1 + 0.5) * 0.9 * (1 - darken), 0, 1);
           for (let c = 0; c < 3; c++) {
             const duo = dark[c] + (light[c] - dark[c]) * l;
             const v = 0.8 * duo + 0.2 * wine[c];
@@ -171,7 +179,7 @@ await photos();
 console.log('band logos');
 for (const b of bands) if (b.logo) await plain(b.logo.src, 720, undefined);
 console.log('partners');
-for (const p of partners) if (p.logo) await plain(p.logo, undefined, 250);
+for (const p of partners) if (p.logo) await plain(p.logo, undefined, 250, undefined, p.dark);
 console.log('ticket button');
 await plain('partners/skillbox-white.png', 500, undefined);
 

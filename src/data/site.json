@@ -11,14 +11,13 @@
   "ticketUrl": "https://www.skillboxes.com/events/slaughterfest-2026-sbysvfxs",
   "ticketPartner": "SkillBox",
   "doors": "5:00 PM",
-  "prices": "₹399–₹1,099",
   "ticketOptions": [
-    { "name": "Early Bird · Single Pass", "price": "₹399" },
-    { "name": "GA Phase 1 · Single Pass", "price": "₹499" },
-    { "name": "GA Phase 2 · Single Pass", "price": "₹599" },
-    { "name": "GA Phase 3 · Single Pass", "price": "₹749" },
-    { "name": "Buddy Pass · Phase 1", "price": "₹999" },
-    { "name": "Buddy Pass · Phase 2", "price": "₹1,099" }
+    { "name": "Early Bird · Single Pass", "price": "₹399", "status": "sold-out" },
+    { "name": "GA Phase 1 · Single Pass", "price": "₹499", "status": "sold-out" },
+    { "name": "Buddy Pass · Phase 1", "price": "₹999", "status": "sold-out" },
+    { "name": "Buddy Pass · Phase 2", "price": "₹1,099", "status": "sold-out" },
+    { "name": "GA Phase 2 · Single Pass", "price": "₹599", "status": "running-low" },
+    { "name": "GA Phase 3 · Single Pass", "price": "₹749", "status": "upcoming" }
   ],
   "ticketPolicy": "Tickets are non-refundable and non-transferable.",
   "gettingThere": "763, 100 Feet Road, HAL 2nd Stage, Appareddipalya, Indiranagar, Bengaluru, Karnataka 560008"

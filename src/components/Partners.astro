@@ -3,12 +3,12 @@ import partners from '../data/partners.json';
 import { asset, manifest, site } from '../lib/site';
 ---
 <section class="partners" aria-labelledby="ph">
-  <h2 id="ph">Partners</h2>
+  <h2 id="ph" class="rv">Partners</h2>
   <ul class="pstrip">
-    {partners.map((p) => {
+    {partners.map((p, i) => {
       const img = p.logo ? manifest[p.logo] : null;
       return (
-        <li>
+        <li class="rv" style={`--i:${i}`}>
           {img ? (
             p.url ? (
               <a class:list={{ chip: p.chip }} href={p.url} target="_blank" rel="noopener"><img src={asset(img.src)} width={img.width} height={img.height} alt={p.alt} loading="lazy" decoding="async" /></a>

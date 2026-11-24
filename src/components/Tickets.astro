@@ -1,15 +1,26 @@
 ---
 import { asset, manifest, site, ticketHref, ticketAttrs } from '../lib/site';
 const sb = manifest['partners/skillbox-white.png'];
+// Ticket status labels. Set "status" on a ticket option in site.json; leave it out for no tag.
+const statusLabels: Record<string, string> = { 'sold-out': 'Sold out', 'running-low': 'Running low', upcoming: 'Upcoming' };
 ---
 <section class="tix" id="tickets" aria-labelledby="th">
-  <div class="tix-in">
+  <div class="tix-in rv">
     <a class="sbbig" href={ticketHref} {...ticketAttrs}><img src={asset(sb.src)} width={sb.width} height={sb.height} alt={`Book tickets on ${site.ticketPartner}`} loading="lazy" decoding="async" /></a>
     <div>
       <h2 id="th">Tickets</h2>
-      <p>Tickets via {site.ticketPartner}. Prices are {site.prices}.</p>
+      <p>Tickets via {site.ticketPartner}.</p>
       <ul class="ticket-options">
-        {site.ticketOptions.map((option) => <li><span>{option.name}</span><strong>{option.price}</strong></li>)}
+        {site.ticketOptions.map((option, i) => {
+          const soldOut = option.status === 'sold-out';
+          const label = option.status ? statusLabels[option.status] : undefined;
+          return (
+            <li class:list={['rv', option.status && `is-${option.status}`]} style={`--i:${i}`}>
+              <span>{soldOut ? <s>{option.name}</s> : option.name}{label && <em class="tix-tag">{label}</em>}</span>
+              <strong>{soldOut ? <s>{option.price}</s> : option.price}</strong>
+            </li>
+          );
+        })}
       </ul>
       <p class="ticket-note">{site.ticketPolicy} Check SkillBox for current availability.</p>
       <a class="btn" href={ticketHref} {...ticketAttrs}>Book tickets</a>

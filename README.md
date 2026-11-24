@@ -31,14 +31,15 @@ Everything that changes between now and the event lives in three JSON files. Edi
 
 | File | What it holds |
 |---|---|
-| `src/data/site.json` | Date, venue, producer, **ticket URL**, doors, age policy, prices, getting there. A value of `null` shows `[TBA]` on the page. |
+| `src/data/site.json` | Date, venue, producer, **ticket URL**, doors, ticket types and their status, getting there. A value of `null` shows `[TBA]` on the page. |
 | `src/data/bands.json` | The lineup, in billing order (top to bottom). Add, remove or reorder bands here. |
 | `src/data/partners.json` | Partner strip. Set `url` to make a logo a link. |
 
 Common jobs:
 
 - **Ticket link is ready:** set `"ticketUrl"` in `site.json`. Every "Book tickets" button then opens it in a new tab and the "link coming soon" text disappears.
-- **Confirm doors, age policy, prices:** replace `null` with text in `site.json`.
+- **Confirm doors:** replace `null` with text in `site.json`.
+- **A ticket type sells out or changes status:** in `site.json`, set its `"status"` under `ticketOptions` to `"sold-out"` (struck through, "Sold out" tag), `"running-low"` or `"upcoming"`. Remove `"status"` for no tag.
 - **Fill in a band's details:** set `city`, `descriptor` and `fact` in `bands.json`. `null` renders as `[TBA]`.
 - **Add a band:** copy an entry in `bands.json`, add its files under `public/assets/bands/` and `public/assets/photos/`. A band without a `logo` is set as text. `"card": true` on a photo is for studio shots on a white background (printed-card look).
 - **Production URL known:** uncomment `site` in `astro.config.mjs` to turn on canonical and social-share URLs.
@@ -79,7 +80,7 @@ The raw partner and artist folders (`Partner Logos-*`, `Slaughterfest 2026 - Art
 
 ## Before launch
 
-- Real ticket URL, doors, age policy, prices.
+- Real ticket URL and doors.
 - Confirm billing order and the details for Fallen Letters, Backrooms and Haiku Like Imagination.
 - A logo file for Astrit, and a clean venue logo if wanted.
 - Confirm permission to show the partner logos, and add partner links.
