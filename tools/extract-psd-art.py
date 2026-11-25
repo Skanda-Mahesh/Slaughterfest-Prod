@@ -1,4 +1,5 @@
-# One-off: pulls engraving elements out of the poster PSD into assets-src/art/ (white ink on transparent).
+# One-off: pulls engraving elements out of the poster PSD into assets-src/art/ (white ink on transparent),
+# plus the full-colour reaper head used for the favicon (assets-src/logos/favicon-reaper.png).
 # The PSDs live in psd/ (gitignored, ~400 MB). Re-run only if the artwork changes:
 #   pip install psd-tools
 #   python tools/extract-psd-art.py
@@ -48,3 +49,19 @@ for name, box, mask, size in parts:
     img.putalpha(a)
     img.save(out / f'engraving-{name}.png', optimize=True)
     print(name, a.size)
+
+# Favicon: the reaper's red hood and skull face in full colour, cut out of the composite with the cloak (Layer 15)
+# and bone (Layer 10) silhouettes, squared up and cropped in so the face reads at tab size.
+colour = psd.composite().convert('RGBA')
+box = (2440, 2900, 3060, 3460)
+head = colour.crop(box)
+head.putalpha(ImageChops.multiply(head.getchannel('A'), ImageChops.lighter(full_alpha('Layer 15'), full_alpha('Layer 10')).crop(box)))
+head = head.crop(head.getchannel('A').point(lambda v: 255 if v > 60 else 0).getbbox())
+s = max(head.size)
+square = Image.new('RGBA', (s, s), (0, 0, 0, 0))
+square.paste(head, ((s - head.width) // 2, (s - head.height) // 2))
+c = int(s * 0.8)  # tighter square, nudged towards the face
+left, top = max(0, min(s - c, int(0.57 * s - c / 2))), max(0, min(s - c, int(0.45 * s - c / 2)))
+icon = square.crop((left, top, left + c, top + c)).resize((512, 512), Image.Resampling.LANCZOS)
+icon.save(ROOT / 'assets-src' / 'logos' / 'favicon-reaper.png', optimize=True)
+print('favicon-reaper', icon.size)

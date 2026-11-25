@@ -230,21 +230,11 @@ async function og() {
 
 console.log('logos');
 await logo();
-// Favicons: the full wordmark is ~2.4:1 and turns to mush at tab size, so use just the "S".
-// The S touches the L (narrowest join at x≈304) and sits above the spiked underline (gap at y≈322).
-// Two steps on purpose: in one pipeline sharp trims before it extracts, which shifts the crop.
-const faviconS = await sharp(
-  await sharp(path.join(SRC, 'logos/slaughterfest-white.png'))
-    .extract({ left: 0, top: 0, width: 304, height: 322 })
-    .png()
-    .toBuffer(),
-)
-  .trim()
-  .png()
-  .toBuffer();
+// Favicons: the reaper's red hood and skull face from the poster (a square master cut by tools/extract-psd-art.py).
+// A bold colour shape like this still reads at 16px, where the spiky wordmark (or a single letter of it) does not.
 for (const [file, size] of [['favicon.png', 64], ['apple-touch-icon.png', 180], ['icon-512.png', 512]]) {
-  const pad = Math.round(size * (file === 'favicon.png' ? 0.04 : 0.14)); // touch icons get rounded corners
-  const inner = await sharp(faviconS)
+  const pad = Math.round(size * (file === 'favicon.png' ? 0 : 0.1)); // touch icons get rounded corners
+  const inner = await sharp(path.join(SRC, 'logos/favicon-reaper.png'))
     .resize(size - 2 * pad, size - 2 * pad, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
     .toBuffer();
   await sharp(inner)
