@@ -297,7 +297,7 @@ footer>div,footer>a{position:relative;z-index:1}
 .ticket-note{font-size:15px;color:#a9a59a}
 .ticket-options .is-sold-out s{color:#BDB1AB;text-decoration:line-through 2px}
 .tix-tag{display:inline-block;margin-left:10px;padding:2px 8px 1px;border:1px solid var(--bone);color:var(--bone);font-family:var(--f-cap);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.12em;line-height:1.5;text-transform:uppercase;white-space:nowrap;vertical-align:2px}
-.is-running-low .tix-tag{background:var(--bone);color:var(--oxblood)}
+.is-running-low .tix-tag,.is-live .tix-tag{background:var(--bone);color:var(--oxblood)}
 .is-upcoming .tix-tag{border-color:#DCCB93;color:#DCCB93}
 .produced{margin:22px 0 0;font-family:var(--f-cap);letter-spacing:.3em;text-transform:uppercase;font-size:14px;color:var(--gold)}
 
@@ -370,7 +370,7 @@ h1 img{animation:settle 1.4s cubic-bezier(.2,.7,.2,1) both}
 .info-grid .cell.rv:nth-child(4){transition-delay:.24s}
 .ticket-options li.rv{transition-delay:calc(.2s + var(--i,0) * 70ms)}
 /* "Running low": a small live dot blinks; the text itself stays solid */
-.is-running-low .tix-tag::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--oxblood);margin-right:6px;vertical-align:1px;animation:blink 1.4s ease-in-out infinite}
+.is-running-low .tix-tag::before,.is-live .tix-tag::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--oxblood);margin-right:6px;vertical-align:1px;animation:blink 1.4s ease-in-out infinite}
 
 /* Reduced motion, and "lite" mode (set by a tiny script for weak devices: 2 cores or less, 2 GB or less, Save-Data, 2G):
    no animation, no transitions, no decorative burst. */

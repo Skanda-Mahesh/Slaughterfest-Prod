@@ -19,8 +19,8 @@
     { "name": "GA Phase 1 · Single Pass", "price": "₹499", "status": "sold-out" },
     { "name": "Buddy Pass · Phase 1", "price": "₹999", "status": "sold-out" },
     { "name": "Buddy Pass · Phase 2", "price": "₹1,099", "status": "sold-out" },
-    { "name": "GA Phase 2 · Single Pass", "price": "₹599", "status": "running-low" },
-    { "name": "GA Phase 3 · Single Pass", "price": "₹749", "status": "upcoming" }
+    { "name": "GA Phase 2 · Single Pass", "price": "₹599", "status": "sold-out" },
+    { "name": "GA Phase 3 · Single Pass", "price": "₹749", "status": "live" }
   ],
   "ticketPolicy": "Tickets are non-refundable and non-transferable.",
   "gettingThere": "763, 100 Feet Road, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560008"
