@@ -1,0 +1,37 @@
+---
+import crew from '../data/crew.json';
+import { asset, manifest } from '../lib/site';
+const banner = manifest['art/banner'];
+// Credits: the first two people are the leads (wide cards on the top row), the rest sit in a row of three below.
+// To add a photo: put the file in assets-src/crew/, set "photo" to its file name in src/data/crew.json, run `npm run assets`.
+---
+<section class="sec crew" id="crew" aria-labelledby="crh">
+  <img class="banner" src={asset(banner.src)} width={banner.width} height={banner.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+  <div class="sec-h rv">
+    <h2 id="crh">The <em>Crew</em></h2>
+    <p>The people behind the night</p>
+  </div>
+  <ul class="crew-grid">
+    {crew.map((c, i) => {
+      const ph = c.photo ? manifest[`crew/${c.photo.replace(/\.\w+$/, '')}`] : null;
+      return (
+        <li class="crew-card rv" style={`--i:${i < 2 ? i : i - 2}`}>
+          <div class="crew-in">
+            <div class="crew-ph">
+              {ph
+                ? <img src={asset(ph.src)} width={ph.width} height={ph.height} alt={c.name} loading="lazy" decoding="async" />
+                : <span class="crew-mono" aria-hidden="true">{c.initials}</span>}
+            </div>
+            <div class="crew-txt">
+              <h3>{c.name}</h3>
+              {c.title && <p class="crew-title">{c.title}</p>}
+              <ul class="crew-roles">
+                {c.roles.map((r, k) => <li style={`--k:${k}`}>{r}</li>)}
+              </ul>
+            </div>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+</section>

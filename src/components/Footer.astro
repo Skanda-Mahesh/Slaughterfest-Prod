@@ -1,8 +1,10 @@
 ---
 import { asset, manifest, site } from '../lib/site';
 const logo = manifest['logos/slaughterfest-white.png'][660];
+const skulls = manifest['art/skulls'];
 ---
 <footer>
+  <img class="skulls" src={asset(skulls.src)} width={skulls.width} height={skulls.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
   <div>
     <p class="big"><img src={asset(logo.src)} alt={site.name} width={logo.width} height={logo.height} loading="lazy" decoding="async" /></p>
     <p>&copy; {site.year} {site.name} &middot; Produced by {site.producedBy}</p>

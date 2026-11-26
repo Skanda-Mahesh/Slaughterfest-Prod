@@ -13,7 +13,7 @@ const partners = JSON.parse(readFileSync('src/data/partners.json', 'utf8'));
 const manifest = {};
 const kb = (p) => Math.round(readFileSync(p).length / 1024);
 
-for (const d of ['logos', 'bands', 'photos', 'partners', 'art']) {
+for (const d of ['logos', 'bands', 'photos', 'partners', 'art', 'crew']) {
   rmSync(path.join(OUT, d), { recursive: true, force: true });
   mkdirSync(path.join(OUT, d), { recursive: true });
 }
@@ -190,6 +190,11 @@ async function engravings() {
   await engraving({ ...stamp, file: 'engraving-mammoth.png', name: 'stamp-mammoth', fade: (u, v) => smooth(0, 0.18, u) * smooth(1, 0.8, v) });
   await engraving({ ...stamp, file: 'engraving-crown.png', name: 'stamp-crown', fade: (u, v) => smooth(1, 0.7, v) });
   await engraving({ ...stamp, outW: 640, file: 'engraving-reaper.png', name: 'stamp-reaper', fade: (u, v) => smooth(1, 0.85, v) });
+  // Edge decorations from the poster: all in faint copper ink on the page black.
+  await engraving({ color: copper, alphaMul: 0.5, outW: 520, file: 'engraving-vines.png', name: 'vines' }); // thin strokes need more strength
+  await engraving({ color: copper, alphaMul: 0.28, outW: 206, file: 'engraving-pillar.png', name: 'pillar', fade: (u, v) => smooth(0, 0.12, v) * smooth(1, 0.85, v) });
+  await engraving({ color: copper, alphaMul: 0.24, outW: 480, file: 'engraving-banner.png', name: 'banner', fade: (u, v) => smooth(1, 0.7, v) });
+  await engraving({ color: copper, alphaMul: 0.26, outW: 1400, file: 'engraving-skulls.png', name: 'skulls', fade: (u, v) => smooth(1, 0.35, v) });
   // Tickets: the whole altar in a deep wine ink on the oxblood panel, fading out towards the base.
   await engraving({ file: 'engraving-altar.png', name: 'altar', outW: 1100, color: [42, 11, 12], alphaMul: 0.32, fade: (u, v) => smooth(1, 0.55, v) });
 }
@@ -228,6 +233,33 @@ async function og() {
   console.log('   og.jpg', W + 'x' + H, kb(path.join(OUT, 'og.jpg')) + ' KB', '(logo height', lh + ')');
 }
 
+// ---------- crew portraits (assets-src/crew/, named in src/data/crew.json) ----------
+// Colour, cropped to 4:5 around a hand-set face point so every face sits in the middle of its frame.
+//   "focus": [x, y]  where the face is, as fractions of the photo (0 to 1)
+//   "zoom":  1 = the widest 4:5 crop that fits, 1.3 = 30% tighter
+async function crewPhotos() {
+  const crew = JSON.parse(readFileSync('src/data/crew.json', 'utf8'));
+  for (const c of crew) {
+    if (!c.photo) continue;
+    const key = c.photo.replace(/\.\w+$/, '');
+    const out = `crew/${key}.webp`;
+    // Orient first (phone photos carry a rotation flag), then crop in the upright picture.
+    const up = await sharp(path.join(SRC, 'crew', c.photo)).rotate().png().toBuffer({ resolveWithObject: true });
+    const W = up.info.width, H = up.info.height;
+    const zoom = c.zoom ?? 1, [fx, fy] = c.focus ?? [0.5, 0.5];
+    const cw = Math.floor(Math.min(W, (H * 4) / 5) / zoom), ch = Math.floor((cw * 5) / 4);
+    const left = Math.round(Math.min(W - cw, Math.max(0, fx * W - cw / 2)));
+    const top = Math.round(Math.min(H - ch, Math.max(0, fy * H - ch / 2)));
+    const info = await sharp(up.data)
+      .extract({ left, top, width: cw, height: ch })
+      .resize(640, 800, { fit: 'fill', withoutEnlargement: true }) // small originals are not blown up
+      .webp({ quality: 82, effort: 6 })
+      .toFile(path.join(OUT, out));
+    manifest[`crew/${key}`] = { src: out, width: info.width, height: info.height };
+    console.log('  ', out, info.width + 'x' + info.height, kb(path.join(OUT, out)) + ' KB');
+  }
+}
+
 console.log('logos');
 await logo();
 // Favicons: the reaper's red hood and skull face from the poster (a square master cut by tools/extract-psd-art.py).
@@ -247,6 +279,8 @@ console.log('hero art');
 await art();
 console.log('engravings');
 await engravings();
+console.log('crew');
+await crewPhotos();
 console.log('share image');
 await og();
 console.log('photos');

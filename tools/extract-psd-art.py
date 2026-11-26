@@ -65,3 +65,23 @@ left, top = max(0, min(s - c, int(0.57 * s - c / 2))), max(0, min(s - c, int(0.4
 icon = square.crop((left, top, left + c, top + c)).resize((512, 512), Image.Resampling.LANCZOS)
 icon.save(ROOT / 'assets-src' / 'logos' / 'favicon-reaper.png', optimize=True)
 print('favicon-reaper', icon.size)
+
+# More bits and pieces for the page edges (white ink on transparent, like the engravings above).
+# (name, source alpha, crop box, optional mask, longest side of the saved master)
+red_cloak = full_alpha('Layer 15')
+extras = [
+    ('vines', full_alpha('Layer 28'), (440, 1300, 1500, 2600), None, 900),    # thorny branches arching from the top-left corner (mirrored for the right)
+    ('pillar', ink, (561, 1543, 912, 3929), None, 1400),                      # the carved totem column from the poster frame
+    ('banner', ink, (3150, 2300, 4050, 3500), red_cloak, 1000),               # the torn red banner on its pole
+    ('skulls', ink, (421, 4950, 4560, 5332), None, 1800),                     # a band of the skull pile
+]
+for name, src, box, mask, size in extras:
+    a = src.crop(box)
+    if mask:
+        a = ImageChops.multiply(a, mask.crop(box))
+    a = a.crop(a.getbbox())
+    a.thumbnail((size, size), Image.Resampling.LANCZOS)
+    img = Image.new('RGBA', a.size, (255, 255, 255, 0))
+    img.putalpha(a)
+    img.save(out / f'engraving-{name}.png', optimize=True)
+    print(name, a.size)

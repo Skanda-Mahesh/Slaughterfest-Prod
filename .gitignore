@@ -8,3 +8,6 @@ Partner Logos-*/
 Slaughterfest 2026 - Artists-*/
 partner logos/
 psd/
+
+# Raw photos dropped in for the site (large). Web copies are made from assets-src/crew/ by npm run assets.
+images/

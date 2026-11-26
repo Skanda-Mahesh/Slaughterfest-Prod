@@ -1,0 +1,85 @@
+[
+  {
+    "name": "Siddant Sarkar",
+    "initials": "SS",
+    "photo": "siddant-sarkar.webp",
+    "title": "Curator",
+    "roles": [
+      "Tech",
+      "Content",
+      "Marketing",
+      "Brand activation and sponsorship",
+      "Operations"
+    ],
+    "focus": [
+      0.46,
+      0.4
+    ],
+    "zoom": 1.1
+  },
+  {
+    "name": "Ankita Dutta",
+    "initials": "AD",
+    "photo": "ankita-dutta.jpg",
+    "title": "Curator",
+    "roles": [
+      "Artists and Repertoire (A&R)",
+      "Marketing",
+      "Backend operations",
+      "Technical operations",
+      "Finances",
+      "Brand activation and sponsorship"
+    ],
+    "focus": [
+      0.47,
+      0.45
+    ],
+    "zoom": 1.1
+  },
+  {
+    "name": "Dipayan Das",
+    "initials": "DD",
+    "photo": "dipayan-das.jpg",
+    "title": "Creative Head",
+    "roles": [
+      "Artwork",
+      "Design"
+    ],
+    "focus": [
+      0.42,
+      0.5
+    ],
+    "zoom": 1.0
+  },
+  {
+    "name": "Kevin Roy",
+    "initials": "KR",
+    "photo": "kevin-roy.jpg",
+    "title": "Tech",
+    "roles": [
+      "Backend work",
+      "Web design",
+      "Stage tech"
+    ],
+    "focus": [
+      0.44,
+      0.43
+    ],
+    "zoom": 1.5
+  },
+  {
+    "name": "Skanda Mahesh",
+    "initials": "SM",
+    "photo": "skanda-mahesh.jpg",
+    "title": "Tech",
+    "roles": [
+      "Stage tech",
+      "Web design"
+    ],
+    "focus": [
+      0.52,
+      0.5
+    ],
+    "zoom": 1.0
+  }
+]

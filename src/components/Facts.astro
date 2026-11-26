@@ -1,6 +1,7 @@
 ---
 import bands from '../data/bands.json';
-import { site } from '../lib/site';
+import { asset, manifest, site } from '../lib/site';
+const pillar = manifest['art/pillar'];
 const tba = '[TBA]';
 const names = bands.map((b) => b.name);
 const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0];
@@ -12,6 +13,7 @@ const cells = [
 ];
 ---
 <section class="sec" id="info" aria-labelledby="ih">
+  <img class="pillar" src={asset(pillar.src)} width={pillar.width} height={pillar.height} alt="" aria-hidden="true" loading="lazy" decoding="async" />
   <div class="sec-h rv">
     <h2 id="ih">The <em>Facts</em></h2>
   </div>

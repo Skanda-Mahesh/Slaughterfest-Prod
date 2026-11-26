@@ -3,8 +3,11 @@ import { asset, manifest, site, ticketHref, ticketAttrs } from '../lib/site';
 const logo = manifest['logos/slaughterfest-white.png'];
 const sb = manifest['partners/skillbox-white.png'];
 const burst = manifest['art/burst'];
+const vines = manifest['art/vines'];
 ---
 <section class="hero" id="top" aria-labelledby="h1">
+  <img class="vine vine-l" src={asset(vines.src)} width={vines.width} height={vines.height} alt="" aria-hidden="true" decoding="async" fetchpriority="low" />
+  <img class="vine vine-r" src={asset(vines.src)} width={vines.width} height={vines.height} alt="" aria-hidden="true" decoding="async" fetchpriority="low" />
   <p class="stamp">{site.producedBy} presents</p>
   <div class="logo-wrap">
     <!-- A single, subdued ash-grey burst sits behind the main logo. -->

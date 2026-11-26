@@ -37,11 +37,60 @@
     "height": 1023,
     "kb": 98
   },
+  "art/vines": {
+    "src": "art/vines.webp",
+    "width": 520,
+    "height": 650,
+    "kb": 7
+  },
+  "art/pillar": {
+    "src": "art/pillar.webp",
+    "width": 206,
+    "height": 1400,
+    "kb": 62
+  },
+  "art/banner": {
+    "src": "art/banner.webp",
+    "width": 480,
+    "height": 664,
+    "kb": 39
+  },
+  "art/skulls": {
+    "src": "art/skulls.webp",
+    "width": 1400,
+    "height": 129,
+    "kb": 50
+  },
   "art/altar": {
     "src": "art/altar.webp",
     "width": 1100,
     "height": 1192,
     "kb": 301
+  },
+  "crew/siddant-sarkar": {
+    "src": "crew/siddant-sarkar.webp",
+    "width": 640,
+    "height": 800
+  },
+  "crew/ankita-dutta": {
+    "src": "crew/ankita-dutta.webp",
+    "width": 523,
+    "height": 653
+  },
+  "crew/dipayan-das": {
+    "src": "crew/dipayan-das.webp",
+    "width": 640,
+    "height": 800
+  },
+  "crew/kevin-roy": {
+    "src": "crew/kevin-roy.webp",
+    "width": 640,
+    "height": 800
+  },
+  "crew/skanda-mahesh": {
+    "src": "crew/skanda-mahesh.webp",
+    "width": 356,
+    "height": 445
   },
   "photos/kryptos.jpg": {
     "wide": {
